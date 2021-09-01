@@ -10,7 +10,7 @@ import (
 	"image/draw"
 	"math"
 
-	convolve2 "gitlab.com/my-group322/pictures/pics-svc/pkg/imgediting/code.google.com/p/graphics-go/graphics/convolve"
+	"github.com/ilyasiv2003/imgediting/code.google.com/p/graphics-go/graphics/convolve"
 )
 
 // DefaultStdDev is the default blurring parameter.
@@ -62,7 +62,7 @@ func Blur(dst draw.Image, src image.Image, opt *BlurOptions) error {
 		kernel[i] = k / kSum
 	}
 
-	return convolve2.Convolve(dst, src, &convolve2.SeparableKernel{
+	return convolve.Convolve(dst, src, &convolve.SeparableKernel{
 		X: kernel,
 		Y: kernel,
 	})

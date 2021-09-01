@@ -10,7 +10,7 @@ import (
 	"image/draw"
 	"math"
 
-	interp2 "gitlab.com/my-group322/pictures/pics-svc/pkg/imgediting/code.google.com/p/graphics-go/graphics/interp"
+	"github.com/ilyasiv2003/imgediting/code.google.com/p/graphics-go/graphics/interp"
 )
 
 // I is the identity Affine transform matrix.
@@ -39,7 +39,7 @@ func (a Affine) Mul(b Affine) Affine {
 	}
 }
 
-func (a Affine) transformRGBA(dst *image.RGBA, src *image.RGBA, i interp2.RGBA) error {
+func (a Affine) transformRGBA(dst *image.RGBA, src *image.RGBA, i interp.RGBA) error {
 	srcb := src.Bounds()
 	b := dst.Bounds()
 	for y := b.Min.Y; y < b.Max.Y; y++ {
@@ -59,7 +59,7 @@ func (a Affine) transformRGBA(dst *image.RGBA, src *image.RGBA, i interp2.RGBA) 
 }
 
 // Transform applies the affine transform to src and produces dst.
-func (a Affine) Transform(dst draw.Image, src image.Image, i interp2.Interp) error {
+func (a Affine) Transform(dst draw.Image, src image.Image, i interp.Interp) error {
 	if dst == nil {
 		return errors.New("graphics: dst is nil")
 	}
@@ -70,7 +70,7 @@ func (a Affine) Transform(dst draw.Image, src image.Image, i interp2.Interp) err
 	// RGBA fast path.
 	dstRGBA, dstOk := dst.(*image.RGBA)
 	srcRGBA, srcOk := src.(*image.RGBA)
-	interpRGBA, interpOk := i.(interp2.RGBA)
+	interpRGBA, interpOk := i.(interp.RGBA)
 	if dstOk && srcOk && interpOk {
 		return a.transformRGBA(dstRGBA, srcRGBA, interpRGBA)
 	}
@@ -109,7 +109,7 @@ func (a Affine) pt(x0, y0 int) (x1, y1 float64) {
 // TransformCenter applies the affine transform to src and produces dst.
 // Equivalent to
 //   a.CenterFit(dst, src).Transform(dst, src, i).
-func (a Affine) TransformCenter(dst draw.Image, src image.Image, i interp2.Interp) error {
+func (a Affine) TransformCenter(dst draw.Image, src image.Image, i interp.Interp) error {
 	if dst == nil {
 		return errors.New("graphics: dst is nil")
 	}

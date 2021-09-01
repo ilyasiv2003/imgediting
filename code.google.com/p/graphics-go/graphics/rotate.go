@@ -9,7 +9,7 @@ import (
 	"image"
 	"image/draw"
 
-	interp2 "gitlab.com/my-group322/pictures/pics-svc/pkg/imgediting/code.google.com/p/graphics-go/graphics/interp"
+	"github.com/ilyasiv2003/imgediting/code.google.com/p/graphics-go/graphics/interp"
 )
 
 // RotateOptions are the rotation parameters.
@@ -32,5 +32,5 @@ func Rotate(dst draw.Image, src image.Image, opt *RotateOptions) error {
 		angle = opt.Angle
 	}
 
-	return I.Rotate(angle).TransformCenter(dst, src, interp2.Bilinear)
+	return I.Rotate(angle).TransformCenter(dst, src, interp.Bilinear)
 }

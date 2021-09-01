@@ -9,7 +9,7 @@ import (
 	"path/filepath"
 
 	"github.com/cockroachdb/errors"
-	graphics2 "gitlab.com/my-group322/pictures/pics-svc/pkg/imgediting/code.google.com/p/graphics-go/graphics"
+	"github.com/ilyasiv2003/imgediting/code.google.com/p/graphics-go/graphics"
 )
 
 // Returns buffer with bytes of image and image itself. They both are converted to jpg
@@ -53,7 +53,7 @@ func MakeThumbnail(img image.Image, config image.Config) ([]byte, error) {
 	proportion := float32(config.Width) / float32(config.Height)
 	dstImage := image.NewRGBA(image.Rect(0, 0, int(200*proportion), 200))
 
-	if err := graphics2.Thumbnail(dstImage, img); err != nil {
+	if err := graphics.Thumbnail(dstImage, img); err != nil {
 		return nil, errors.Wrap(err, "failed to create thumbnail")
 	}
 

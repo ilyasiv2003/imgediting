@@ -9,7 +9,7 @@ import (
 	"image"
 	"image/draw"
 
-	interp2 "gitlab.com/my-group322/pictures/pics-svc/pkg/imgediting/code.google.com/p/graphics-go/graphics/interp"
+	"github.com/ilyasiv2003/imgediting/code.google.com/p/graphics-go/graphics/interp"
 )
 
 // Scale produces a scaled version of the image using bilinear interpolation.
