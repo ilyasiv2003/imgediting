@@ -8,8 +8,8 @@ import (
 	"mime/multipart"
 	"path/filepath"
 
-	"github.com/cockroachdb/errors"
 	"github.com/ilyasiv2003/imgediting/code.google.com/p/graphics-go/graphics"
+	"github.com/pkg/errors"
 )
 
 // Returns buffer with bytes of image and image itself. They both are converted to jpg
